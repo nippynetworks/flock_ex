@@ -11,11 +11,13 @@ compatible with such utilities
 
 # Usage
 
+```elixir
   iex> {:ok, handle} = FlockEx.flock("#{System.tmp_dir}/lockme")
   {:ok, #Reference<0.2958773140.145358881.211403>}
 
   iex> FlockEx.unflock(handle)
   :ok
+```
 
 If the process holding the lock dies, then the flock will be automatically released.
 
@@ -27,7 +29,7 @@ this can be changed using params:
 
 - exclusive: default true to take out an exclusive lock, false for a shared/read lock
 - wait: default true to wait forever for a lock, false returns {:error, :eagain}
-      if the lock cannot be obtained immediately
+if the lock cannot be obtained immediately
 
 ## Installation
 
@@ -42,7 +44,4 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/flock_ex>.
 
