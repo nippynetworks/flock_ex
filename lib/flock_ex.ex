@@ -6,6 +6,7 @@ defmodule FlockEx do
 
   @on_load :load_nif
 
+  @doc false
   def load_nif do
     path = :filename.join(:code.priv_dir(:flock_ex), ~c"flock_ex")
     :erlang.load_nif(path, 0)
@@ -17,10 +18,10 @@ defmodule FlockEx do
 
   Options:
   * `:exclusive` - if true, obtain an exclusive (`LOCK_EX`) lock (default: true),
-                    else obtain shared/read-only ('LOCK_SH') lock
+  else obtain shared/read-only ('LOCK_SH') lock
   * `:wait` - if true, return immediately with `{:error, :eagain}`
-              if lock cannot be immediately acquired (default: true)
-              else, wait for lock to become free
+  if lock cannot be immediately acquired (default: true)
+  else, wait for lock to become free
 
   Note: the lock will be automatically released if the process crashes, or if the lock handle goes
   out of scope in the parent process.
