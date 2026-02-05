@@ -108,6 +108,7 @@ static ERL_NIF_TERM flock_nif(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[
 
     if (!enif_self(env, &handle->owner)) {
         flock_handle_dtor(env, handle);
+        enif_release_resource(handle);
         return make_error(env, "self_failed");
     }
 
